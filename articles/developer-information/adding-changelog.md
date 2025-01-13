@@ -70,15 +70,15 @@ Ajoutez également la balise changelogurl au fichier manifest XML d’extension.
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" method="upgrade">
-	<name>COM_LISTS</name>
+    <name>COM_LISTS</name>
 
 ... Other stuff ...
 
-	<changelogurl>https://example.com/updates/changelog.xml</changelogurl>
+    <changelogurl>https://example.com/updates/changelog.xml</changelogurl>
 
-	<updateservers>
+    <updateservers>
         <server type="extension" name="My Extension's Updates">https://example.com/lists-updates.xml</server>
-	</updateservers>
+    </updateservers>
 </extension>
 ```
 ## Créer un fichier changelog
@@ -148,12 +148,12 @@ Le format du texte peut être du texte brut ou HTML, mais dans le cas du HTML, i
         </note>
 </changelog>
 <changelog>
-	<element>com_lists</element>
-	<type>component</type>
-	<version>0.0.2</version>
-	<security>
-		<item>Big issue</item>
-	</security>
+    <element>com_lists</element>
+    <type>component</type>
+    <version>0.0.2</version>
+    <security>
+        <item>Big issue</item>
+    </security>
 </changelog>
 </changelogs>
 ```

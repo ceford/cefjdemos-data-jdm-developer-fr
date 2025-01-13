@@ -129,10 +129,10 @@ langue maternelle de l'utilisateur.
 ### Fichiers de frontend
 
 ```xml
-	<files folder="from-folder">
-		<filename>example.php</filename>
-		<folder>examples</folder>
-	</files>
+    <files folder="from-folder">
+        <filename>example.php</filename>
+        <folder>examples</folder>
+    </files>
 ```
 
 Les fichiers à copier dans le répertoire de frontend doivent être placés
@@ -150,11 +150,11 @@ classe du plugin. Par exemple, dans le cas d'un système de plugin appelé
 ### Fichiers multimédias
 
 ```xml
-	<media folder="media" destination="com_example">
-		<filename>com_example_logo.png</filename>
-		<folder>css</folder>
-		<folder>js</folder>
-	</media>
+    <media folder="media" destination="com_example">
+        <filename>com_example_logo.png</filename>
+        <folder>css</folder>
+        <folder>js</folder>
+    </media>
 ```
 
 Cet exemple permet de copier le fichier (`/media/com_example_logo.png`)
@@ -188,9 +188,9 @@ Ref:
 ### Section de l'administration
 
 ```xml
-	<administration>
-		<!-- various elements -->
-	</administration>
+    <administration>
+        <!-- various elements -->
+    </administration>
 ```
 
 La section d'administration est définie par l'élément . Puisque seuls
@@ -216,15 +216,15 @@ balise n'est présente dans votre fichier manifest, aucun menu d'administration
 ne sera créé pour le composant.
 
 ```xml
-	<menu>COM_EXAMPLE</menu>
-	<submenu>
-		<!--
-			Note that all & must be escaped to &amp; for the file to be valid
-			XML and be parsed by the installer
-		-->
-		<menu link="anoption=avalue&amp;anoption1=avalue1">COM_EXAMPLE_SUBMENU_ANOPTION</menu>
-		<menu view="viewname">COM_EXAMPLE_SUBMENU_VIEWNAME</menu>
-	</submenu>
+    <menu>COM_EXAMPLE</menu>
+    <submenu>
+        <!--
+            Note that all & must be escaped to &amp; for the file to be valid
+            XML and be parsed by the installer
+        -->
+        <menu link="anoption=avalue&amp;anoption1=avalue1">COM_EXAMPLE_SUBMENU_ANOPTION</menu>
+        <menu view="viewname">COM_EXAMPLE_SUBMENU_VIEWNAME</menu>
+    </submenu>
 ```
 
 Le texte pour l'élément du menu principal pour le composant est défini
@@ -318,8 +318,8 @@ the Administrator area for the site.
 
 ```xml
   <dashboards>
-		<dashboard title="COM_EXAMPLE_DASHBOARD_TITLE" icon="icon-lock">example</dashboard>
-	</dashboards>
+        <dashboard title="COM_EXAMPLE_DASHBOARD_TITLE" icon="icon-lock">example</dashboard>
+    </dashboards>
 ```
 
 ### Configuration
@@ -389,12 +389,12 @@ Depuis la version 1.6, une balise est disponible et vous permet de
 fournir une série de fichiers SQL pour mettre à jour le schéma actuel.
 
 ```sql
-	<update>
-		<schemas>
-			<schemapath type="mysql">sql/updates/mysql</schemapath>
-			<schemapath type="sqlsrv">sql/updates/sqlsrv</schemapath>
-		</schemas>
-	</update>
+    <update>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+            <schemapath type="sqlsrv">sql/updates/sqlsrv</schemapath>
+        </schemas>
+    </update>
 ```
 
 Par exemple, pour passer de la version `1.0.0` à la version `1.0.1` dans
@@ -428,7 +428,7 @@ toujours être utilisée avec la version**.
 ```xml
 <!-- Joomla! language tag -->
 <languages folder="langfiles">
-	<language tag="en-GB">en-GB.com_example.ini</language>
+    <language tag="en-GB">en-GB.com_example.ini</language>
 </languages>
 ```
 
@@ -458,9 +458,9 @@ dans cet exemple :
 
 ```xml
 <files>
-	<filename plugin="alpha">alpha.php</filename>
-	<folder>sql</folder>
-	<folder>language</folder>
+    <filename plugin="alpha">alpha.php</filename>
+    <folder>sql</folder>
+    <folder>language</folder>
 </files>
 ```
 
@@ -469,13 +469,13 @@ exemple du noyau :
 
 ```xml
 <files>
-	<filename plugin="languagecode">languagecode.php</filename>
-	<filename>index.html</filename>
-	<folder>language</folder>
+    <filename plugin="languagecode">languagecode.php</filename>
+    <filename>index.html</filename>
+    <folder>language</folder>
 </files>
 <languages>
-	<language tag="en-GB">language/en-GB/en-GB.plg_system_languagecode.ini</language>
-	<language tag="en-GB">language/en-GB/en-GB.plg_system_languagecode.sys.ini</language>
+    <language tag="en-GB">language/en-GB/en-GB.plg_system_languagecode.ini</language>
+    <language tag="en-GB">language/en-GB/en-GB.plg_system_languagecode.sys.ini</language>
 </languages>
 ```
 
@@ -545,74 +545,74 @@ use Joomla\CMS\Installer\InstallerAdapter;
 
 class com_componentnameInstallerScript
 {
-	/**
-	 * Constructor
-	 *
-	 * @param   InstallerAdapter  $adapter  The object responsible for running this script
-	 */
-	public function __construct(InstallerAdapter $adapter)
-	{
-	}
+    /**
+     * Constructor
+     *
+     * @param   InstallerAdapter  $adapter  The object responsible for running this script
+     */
+    public function __construct(InstallerAdapter $adapter)
+    {
+    }
 
-	/**
-	 * Called before any type of action
-	 *
-	 * @param   string  $route  Which action is happening (install|uninstall|discover_install|update)
-	 * @param   InstallerAdapter  $adapter  The object responsible for running this script
-	 *
-	 * @return  boolean  True on success
-	 */
-	public function preflight($route, InstallerAdapter $adapter)
-	{
-		return true;
-	}
+    /**
+     * Called before any type of action
+     *
+     * @param   string  $route  Which action is happening (install|uninstall|discover_install|update)
+     * @param   InstallerAdapter  $adapter  The object responsible for running this script
+     *
+     * @return  boolean  True on success
+     */
+    public function preflight($route, InstallerAdapter $adapter)
+    {
+        return true;
+    }
 
-	/**
-	 * Called after any type of action
-	 *
-	 * @param   string  $route  Which action is happening (install|uninstall|discover_install|update)
-	 * @param   InstallerAdapter  $adapter  The object responsible for running this script
-	 *
-	 * @return  boolean  True on success
-	 */
-	public function postflight($route, $adapter)
-	{
-		return true;
-	}
+    /**
+     * Called after any type of action
+     *
+     * @param   string  $route  Which action is happening (install|uninstall|discover_install|update)
+     * @param   InstallerAdapter  $adapter  The object responsible for running this script
+     *
+     * @return  boolean  True on success
+     */
+    public function postflight($route, $adapter)
+    {
+        return true;
+    }
 
-	/**
-	 * Called on installation
-	 *
-	 * @param   InstallerAdapter  $adapter  The object responsible for running this script
-	 *
-	 * @return  boolean  True on success
-	 */
-	public function install(InstallerAdapter $adapter)
-	{
-		return true;
-	}
+    /**
+     * Called on installation
+     *
+     * @param   InstallerAdapter  $adapter  The object responsible for running this script
+     *
+     * @return  boolean  True on success
+     */
+    public function install(InstallerAdapter $adapter)
+    {
+        return true;
+    }
 
-	/**
-	 * Called on update
-	 *
-	 * @param   InstallerAdapter  $adapter  The object responsible for running this script
-	 *
-	 * @return  boolean  True on success
-	 */
-	public function update(InstallerAdapter $adapter)
-	{
-		return true;
-	}
+    /**
+     * Called on update
+     *
+     * @param   InstallerAdapter  $adapter  The object responsible for running this script
+     *
+     * @return  boolean  True on success
+     */
+    public function update(InstallerAdapter $adapter)
+    {
+        return true;
+    }
 
-	/**
-	 * Called on uninstallation
-	 *
-	 * @param   InstallerAdapter  $adapter  The object responsible for running this script
-	 */
-	public function uninstall(InstallerAdapter $adapter)
-	{
-		return true;
-	}
+    /**
+     * Called on uninstallation
+     *
+     * @param   InstallerAdapter  $adapter  The object responsible for running this script
+     */
+    public function uninstall(InstallerAdapter $adapter)
+    {
+        return true;
+    }
 }
 
 ?>

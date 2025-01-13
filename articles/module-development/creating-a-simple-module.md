@@ -377,18 +377,18 @@ defined('_JEXEC') or die;
  */
 class FooHelper
 {
-	/**
-	 * Retrieve foo test
-	 *
-	 * @param   Registry        $params  The module parameters
-	 * @param   CMSApplication  $app     The application
-	 *
-	 * @return  array
-	 */
-	public static function getText()
-	{
-		return 'FooHelpertest';
-	}
+    /**
+     * Retrieve foo test
+     *
+     * @param   Registry        $params  The module parameters
+     * @param   CMSApplication  $app     The application
+     *
+     * @return  array
+     */
+    public static function getText()
+    {
+        return 'FooHelpertest';
+    }
 }
 ```
 
@@ -734,7 +734,7 @@ Ensuite nous utilisons cette variable pour créer le lien.
 
 ```php
 <a href="<?php echo $domain; ?>">
-	<?php echo '[PROJECT_NAME]' . $test; ?>
+    <?php echo '[PROJECT_NAME]' . $test; ?>
 </a>
 ```
 
@@ -760,7 +760,7 @@ $domain = $params->get('domain', 'https://www.joomla.org');
 ?>
 
 <a href="<?php echo $domain; ?>">
-	<?php echo '[PROJECT_NAME]' . $test; ?>
+    <?php echo '[PROJECT_NAME]' . $test; ?>
 </a>
 ```
 

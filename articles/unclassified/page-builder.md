@@ -32,10 +32,10 @@ tel que dans Apodis :
 ```xml
 <fieldset name="pagebuilder" label="TPL_APODIS_PAGEBUILDER">
    <field
-		name="grid"
-		type="pagebuilder"
-		hidden="true"
-		label="TPL_APODIS_PAGEBUILDER"
+        name="grid"
+        type="pagebuilder"
+        hidden="true"
+        label="TPL_APODIS_PAGEBUILDER"
    />
 </fieldset>
 ```
