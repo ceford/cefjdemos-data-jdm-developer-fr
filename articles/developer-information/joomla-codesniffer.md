@@ -1,397 +1,332 @@
-<!-- Filename: Joomla_CodeSniffer / Display title: Joomla CodeSniffer 'Renifleur de Code' -->
-
-## Un Nez Pour Joomla
-
-Il s'agit d'une norme de codage personnalisée pour PHP CodeSniffer qui
-tente de codifier et d'appliquer les normes de codage Joomla. Cet
-article explique comment définir le vérificateur automatique de style de
-code. Il se compose de trois étapes:
+<!-- Filename: Joomla_CodeSniffer / Display title: Normes de codage -->
+
+<div class="alert alert-warning">
+La dernière partie de cet article doit être mise à jour !
+</div>
+
+## Un aperçu de l'IA
+
+Les normes de codage sont importantes pour le développement de logiciels car elles :
+
+- **Améliorer la qualité du code**
+  - Les normes de codage aident à garantir que le code est fiable, sécurisé et sûr. Elles peuvent également aider à réduire les problèmes de performance et les préoccupations de sécurité qui pourraient découler de mauvaises pratiques de codage.
+- **Rendre le code plus lisible et maintenable**
+  - Les normes de codage aident à rendre le code plus facile à comprendre, à lire et à maintenir. Cela peut aussi faciliter le travail des nouveaux développeurs avec le code.
+- **Accélérer le développement**
+  - Les normes de codage peuvent aider les développeurs à éviter les erreurs courantes qui peuvent ralentir les processus de codage.
+- **Améliorer la collaboration**
+  - Les normes de codage peuvent faciliter la collaboration entre développeurs, même dans de grandes équipes.
+- **Assurer la cohérence**
+  - Les normes de codage aident à garantir que le code est cohérent à travers les projets. Cela peut faciliter le travail des développeurs ensemble sur les mêmes projets.
+- **Améliorer l'évolutivité**
+  - Les normes de codage peuvent aider à s'assurer que le code peut évoluer sans devenir ingérable.
+- **Fournir des critères clairs pour les revues de code**
+  - Les normes de codage peuvent aider à fournir des critères clairs pour les revues de code, ce qui peut conduire à des retours plus efficaces.
+
+Les normes de codage incluent souvent des règles pour l'indentation, la longueur des lignes, le placement des accolades et l'espacement.
+
+Joomla utilise la norme de codage [PSR-12](https://www.php-fig.org/psr/psr-12/). Vous pouvez activer cette norme de codage dans votre IDE et obtenir des indications si vous ne suivez pas la norme de codage ou utilisez un correcteur automatique également. Nous vous recommandons de suivre cette norme lors du développement de vos propres extensions pour rester compatible avec le cœur et pour vous assurer que votre code fonctionnera, espérons-le, avec les futures versions.
+
+## PHP Code Sniffer
+
+Veuillez consulter la source actuelle de [PHP_CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer/) pour obtenir des informations sur cet utilitaire et comment l'installer. Soyez conscient que la source originale est abandonnée mais qu'elle peut être listée par les moteurs de recherche. Il y a deux scripts :
+
+- **phpcs** détecte les violations d'une norme de codage et produit un rapport.
+- **phpcbf** tente de corriger les violations des normes de codage et produit un rapport sur ce qu'il a fait.
+
+Vous pouvez installer les scripts individuels ou utiliser composer pour les installer. Vous pouvez également les trouver dans un clone de Joomla situé dans libraries/vendor/bin ainsi qu'avec d'autres utilitaires utiles.
+
+## Tester PHP Code Sniffer
+
+Si vous placez une installation globale dans votre `$PATH`, vous pouvez exécuter le détecteur de code depuis la ligne de commande à la racine d'un projet. Essayez ceci pour afficher une liste de normes de codage :
+
+```sh
+phpcs -i
+The installed coding standards are MySource, PEAR, PSR1, PSR2, PSR12, Squiz and Zend
+```
+
+À titre d'exemple, la commande suivante a été utilisée dans un ancien dossier de projet qui utilisait l'ancienne norme de codage personnalisée Joomla. Entre autres, elle utilisait des tabulations plutôt que des espaces pour la mise en page. De nombreuses lignes similaires ont été omises ci-dessous pour des raisons de concision.
+
+```sh
+phpcs --standard=PSR12 .
+
+FILE: /Users/ceford/git/j4xdemos-plg-toc/j4xdemostoc/j4xdemostoc.php
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+FOUND 132 ERRORS AND 3 WARNINGS AFFECTING 116 LINES
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   1 | WARNING | [ ] A file should declare new symbols (classes, functions, constants, etc.) and cause no other side effects, or it should execute logic with side effects, but should not do both. The
+     |         |     first symbol is defined on line 22 and the first side effect is on line 10.
+   1 | ERROR   | [x] Header blocks must be separated by a single blank line
+  22 | ERROR   | [ ] Each class must be in a namespace of at least one level (a top-level vendor name)
+  24 | ERROR   | [x] Spaces must be used to indent lines; tabs are not allowed
+  25 | ERROR   | [x] Spaces must be used to indent lines; tabs are not allowed
+  26 | ERROR   | [x] Spaces must be used to indent lines; tabs are not allowed
+  ...
+  42 | ERROR   | [x] Expected 1 space after closing parenthesis; found newline
+...
+  48 | ERROR   | [x] No space found after comma in argument list
+  48 | ERROR   | [x] Expected 1 space after closing parenthesis; found newline
+...
+  67 | ERROR   | [x] Expected 0 spaces before closing parenthesis; 1 found
+...
+  75 | ERROR   | [x] Space after opening parenthesis of function call prohibited
+  75 | ERROR   | [x] Expected 0 spaces before closing parenthesis; 1 found
+...
+ 138 | WARNING | [ ] Line exceeds 120 characters; contains 168 characters
+ 139 | ERROR   | [x] Spaces must be used to indent lines; tabs are not allowed
+ 139 | WARNING | [ ] Line exceeds 120 characters; contains 141 characters
+...
+ 156 | ERROR   | [x] Spaces must be used to indent lines; tabs are not allowed
+ 157 | ERROR   | [x] Expected 1 newline at end of file; 0 found
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 131 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Time: 123ms; Memory: 8MB
+```
+
+L'exemple de projet précédent contenait un seul fichier PHP et aucun fichier CSS ou JS. phpcs produit un rapport pour chaque fichier PHP, CSS et JS dans un projet. Voici quelques exemples pour les fichiers CSS et JS :
+
+```sh
+FILE: /Users/ceford/git/j4x-demos-com-mediacat/com_mediacat/media/css/mediacat.css
+----------------------------------------------------------------------------------
+FOUND 33 ERRORS AFFECTING 32 LINES
+----------------------------------------------------------------------------------
+  3 | ERROR | [x] Spaces must be used to indent lines; tabs are not allowed
+...
+ 51 | ERROR | [x] Whitespace found at end of line
+...
+ 79 | ERROR | [x] Spaces must be used to indent lines; tabs are not allowed
+----------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 33 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------------
+
+FILE: /Users/ceford/git/j4x-demos-com-mediacat/com_mediacat/media/css/file-icon-classic.min.css
+-----------------------------------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+-----------------------------------------------------------------------------------------------
+ 1 | WARNING | File appears to be minified and cannot be processed
+-----------------------------------------------------------------------------------------------
 
-1.  Installez PHP CodeSniffer (phpcs).
-2.  Clonez le style de code Joomla (à utiliser avec pour phpcs).
-3.  Configurez votre IDE pour qu'il fonctionne avec PHP CodeSniffer et
-    le Style de Code Joomla.
+FILE: /Users/ceford/git/j4x-demos-com-mediacat/com_mediacat/media/js/mediacat-site.js
+-------------------------------------------------------------------------------------
+FOUND 38 ERRORS AFFECTING 30 LINES
+-------------------------------------------------------------------------------------
+  3 | ERROR | [x] Spaces must be used to indent lines; tabs are not allowed
+  5 | ERROR | [x] Expected 1 space after FUNCTION keyword; 0 found
+  6 | ERROR | [x] Spaces must be used to indent lines; tabs are not allowed
+...
+ 13 | ERROR | [x] Opening brace should be on a new line
+...
+ 29 | ERROR | [x] Spaces must be used to indent lines; tabs are not allowed
+ 29 | ERROR | [x] Expected at least 1 space before "+"; 0 found
+ 29 | ERROR | [x] Expected at least 1 space after "+"; 0 found
+...
+ 36 | ERROR | [x] Spaces must be used to indent lines; tabs are not allowed
+-------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 38 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-------------------------------------------------------------------------------------
+```
 
-<img
-src="https://docs.joomla.org/images/thumb/e/e4/CodeSnifferInAction.jpg/300px-CodeSnifferInAction.jpg"
-class="thumbimage" decoding="async"
-srcset="https://docs.joomla.org/images/thumb/e/e4/CodeSnifferInAction.jpg/450px-CodeSnifferInAction.jpg 1.5x, https://docs.joomla.org/images/thumb/e/e4/CodeSnifferInAction.jpg/600px-CodeSnifferInAction.jpg 2x"
-data-file-width="995" data-file-height="641" width="300" height="193" />
-<a href="https://docs.joomla.org/File:CodeSnifferInAction.jpg"
-class="internal" title="Enlarge"></a>PHP Code Sniffer in action
+## Variations de Commande
 
-## Pourquoi ?
+Vous pouvez obtenir de l'aide avec les commandes phpcs :
 
-- Une pratique de codage cohérente rend les fichiers plus
-  professionnels. Les styles en conflit dans le même projet (ou, pire,
-  dans le même fichier) ne sont pas seulement négligés, ils encouragent
-  encore à plus de négligence.
-- Lorsque tout le code est conforme à la même norme, il est plus facile
-  pour tout le monde de détecter un code incorrect.
-- Il est ainsi plus facile pour un nouveau venu dans un fichier du
-  projet de rechercher et de corriger des erreurs ou d’étendre les
-  fonctionnalités.
-- Si aucune norme cohérente n'est maintenue, les développeurs
-  reformatent parfois le code pour l'adapter à leurs besoins. Cela
-  provoque une large gamme de modifications dans le référentiel de code.
-  S'il y a un problème ultérieur, un changement significatif pourrait
-  être perdu dans la zizanie produite par un diff.
+```sh
+phpcs --help
+```
 
-## 1. Installation de PHP Code Sniffer (phpcs)
+### Exclure un ou plusieurs fichiers
 
-### Composer
-
-PHP Code Sniffer est disponible via Composer. Il peut être installé à
-l'échelle du système à l'aide de la commande suivante:  
-`composer global require --dev squizlabs/php_codesniffer "~3.5"` Sous
-**Linux**, PHP Code Sniffer (phpcs) sera installé dans votre dossier
-utilisateur:
-
-- Lien symbolique: `~/.composer/vendor/bin/phpcs`
-- Le fichier:
-  `~/.composer/vendor/squizlabs/php_codesniffer/scripts/phpcs`
+Utilisez une liste de motifs de fichiers séparés par des virgules pour exclure les fichiers de la validation du style de code. Exemple
 
-Pour créer ce lien symbolique, utilisez sur la ligne de
-commande:` $ sudo ln -s ~/.config/composer/vendor/squizlabs/php_codesniffer/scripts /usr/bin/phpcs `
-
-ou (par exemple OpenSuse)
-
-- Lien symbolique: `~/.config/composer/vendor/bin/phpcs`
-- Le fichier:
-  `~/.config/composer/vendor/squizlabs/php_codesniffer/scripts/phpcs`
-
-Sous **Windows**, PHP Code Sniffer (phpcs) sera installé dans votre
-dossier utilisateur:
+```php
+phpcs --standard=PSR12 --ignore='libraries/*' .
+```
 
-- Lien symbolique:
-  `c:\Users\Username\AppData\Roaming\Composer\vendor\bin\phpcs`
-- Le fichier:
-  `c:\Users\Username\AppData\Roaming\Composer\vendor\squizlabs\php_codesniffer\scripts\phpcs`
-
-### Ajouter le répertoire bin de Composer à votre \$PATH
-
-Pour exécuter PHP Code sniffer depuis n'importe où en ligne de commande
-Linux ou Mac, vous devez ajouter `.composer/vendor/bin` à votre variable
-\$PATH. Pour ce faire, éditez de manière persistante le fichier de
-démarrage de votre shell, comme votre fichier .profile ou .bash_profile,
-selon le shell que vous utilisez (echo \$SHELL vous indique celui que
-vous utilisez).
-
-Ajoutez la ligne suivante au fichier:
-`export PATH=$PATH:~/.composer/vendor/bin`
+### Exclure une ou plusieurs règles
 
-Vous pouvez également créer un lien symbolique dans le dossier bin:
-`ln -s ~/.composer/vendor/bin/phpcs /usr/local/bin/phpcs`
+Joomla permet des lignes plus longues que la norme PSR, 560 au lieu de 120. La commande suivante peut être utilisée pour omettre les avertissements de lignes longues :
 
-## 2. Installation de Joomla Coding Standards
-
-Pour que PHP Code Sniffer (phpcs) recherche vos projets Joomla afin
-d'obtenir le style de code approprié, vous devez installer les standards
-de codage Joomla.
-
-En utilisant Composer, nous pouvons exécuter:
-`composer global require --dev joomla/coding-standards "~3.0@alpha"`
-
-Notez que cela indique `@alpha` , car la norme de codage est toujours à
-l'état alpha et nous devons autoriser l'installation du code d'état
-alpha. Si nous n'incluons pas le `@alpha`, les normes de codage ne
-seront pas installées et généreront cette erreur.
-
-    Your requirements could not be resolved to an installable set of packages.
-
-      Problem 1
-        - The requested package joomla/coding-standards ~3.0 is satisfiable by joomla/coding-standards[3.0.0-alpha, 3.0.0-alpha2, 3.x-dev] but these conflict with your requirements or minimum-stability.
-
-Une fois l'installation terminée, la norme de codage sera installée dans
-le dossier global composer. L'emplacement de ce dossier dépend de votre
-système d'exploitation. Certains endroits populaires sont:
-
-**Mac / Linux**
-
-    ~/.composer/vendor/joomla/coding-standards/
-
-    ~/.config/composer/vendor/joomla/coding-standards/
-
-**Windows**
-
-    c:\Users\Username\AppData\Roaming\Composer\vendor\joomla\coding-standards\
-
-Ceci utilise Composer sous Windows.
-
-Si vous ne le trouvez pas dans l'un des dossiers ci-dessus, notez que le
-dossier que vous recherchez se termine par
-**\joomla\coding-standards\\**. Enfin, nous devons indiquer à Code
-Sniffer que les normes de codage Joomla existent.
-
-**Installer les normes de codage Joomla**
-
-1.  Vérifiez si certains chemins sont déjà définis en exécutant
-    `phpcs --config-show`
-2.  Vous pouvez obtenir une réponse qui ressemble à ceci:
-    `installed_paths: /path/to/installation`
-3.  A l'étape 2, si vous voyez le **installed_paths**, vous devez le
-    copier.
-4.  Définissez le chemin des standards de codage Joomla dans phpcs en
-    exécutant
-    `phpcs --config-set installed_paths [/to/path1],[/to/path2],[/Users/user/.composer/vendor/joomla/coding-standards]`.
-    Si vous avez copié des chemins à l'étape 2, incluez-les ici
-    également en les séparant par une virgule. La commande ressemble à
-    ça
-    `phpcs --config-set installed_paths [/to/path1],[/to/path2],[/Users/user/.composer/vendor/joomla/coding-standards]`
-5.  Vérifiez que le chemin est défini correctement en exécutant:
-    `phpcs --config-show`
-6.  Vérifiez que phpcs peut voir le style de code Joomla en lançant:
-    `phpcs -i`
-7.  La sortie devrait ressembler à ceci:
-    `The installed coding standards are MySource, PEAR, PHPCS, PSR1, PSR2, Squiz, Zend and Joomla`
-
-## Utilisation
-
-Vous appelez la norme personnalisée par
-`phpcs --standard=Joomla file/to/sniff`
-
-Pour tester un fichier de plateforme en utilisant les normes de codage
-de plateforme fournies, utilisez
-`phpcs --standard=build/phpcs/Joomla path/to/file/or/folder`
-
-Une documentation supplémentaire sur l'utilisation de phpcs est
-disponible à l'adresse suivante:
-<a href="http://pear.php.net/package/PHP_CodeSniffer/docs"
-class="external autonumber" target="_blank"
-rel="nofollow noreferrer noopener">[1]</a>
-
-## 3. Integration IDE
-
-Tout le monde aime la console. C'est sans aucun doute le moyen le plus
-efficace de faire ce que vous devez faire. Parfois, même les gourous de
-Linux ont besoin d'un peu de confort.
-
-Heureusement, il existe un plug-in disponible pour PhpStorm, Eclipse et
-Netbeans qui intègre CodeSniffer dans votre IDE préféré. Ainsi, toutes
-les violations standard de codage sont affichées comme des erreurs
-"normales".
-
-### PhpStorm
-
-Code Sniffer est pris en charge immédiatement dans PhpStorm. Allez dans
-Paramètres et sous Editeur  **→**  Inspections, vous verrez la liste des
-renifleurs que vous avez installés.
-
-#### Définir le chemin d'accès à Code Sniffer
-
-1.  Open Settings (CTRL-ALT-S / CMD-,)
-2.  Go to Languages & Frameworks
-3.  Click on PHP
-4.  Click on Quality Tools
-5.  Click on PHP cs fixer dropdown arrow
-6.  The configuration is set to Local by default
-7.  Click on the 3 dots behind it to open the configuration screen
-8.  The first option is the PHP Code Sniffer (phpcs) path
-9.  Click on the 3 dots behind the path to select the location of the
-    phpcs file. See above on where phpcs may be installed on your site
-10. Click on Validate to make sure the path is correct and phpcs is
-    working
-11. Click OK
-
-##### Activer le Style de Code Joomla
-
-1.  Open Settings (CTRL-ALT-S / CMD-,)
-2.  Go to Editor
-3.  Click on Inspections
-4.  In the list, go to PHP
-5.  Click on PHP Code Sniffer Validation
-6.  Click on the check box behind it to activate it
-7.  Click the Reload button (2 arrows) to force a reload of rules from
-    disk
-8.  Joomla should now be available in the list. See following image:<img
-    src="https://docs.joomla.org/images/thumb/9/9c/PhpStorm8CodeSniffer.png/500px-PhpStorm8CodeSniffer.png"
-    decoding="async"
-    srcset="https://docs.joomla.org/images/thumb/9/9c/PhpStorm8CodeSniffer.png/750px-PhpStorm8CodeSniffer.png 1.5x, https://docs.joomla.org/images/thumb/9/9c/PhpStorm8CodeSniffer.png/1000px-PhpStorm8CodeSniffer.png 2x"
-    data-file-width="2446" data-file-height="1624" width="500" height="332"
-    alt="PHPStorm CodeSniffer" />
-9.  Click OK
-
-#### PHP PSR-0, PSR-1 et PSR-2
-
-- <a
-  href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md"
-  class="external free" target="_blank"
-  rel="nofollow noreferrer noopener">https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md</a>
-- <a
-  href="https://github.com/pmjones/fig-standards/blob/psr-1-style-guide/proposed/PSR-1-basic.md"
-  class="external free" target="_blank"
-  rel="nofollow noreferrer noopener">https://github.com/pmjones/fig-standards/blob/psr-1-style-guide/proposed/PSR-1-basic.md</a>
-- <a
-  href="https://github.com/pmjones/fig-standards/blob/psr-1-style-guide/proposed/PSR-2-advanced.md"
-  class="external free" target="_blank"
-  rel="nofollow noreferrer noopener">https://github.com/pmjones/fig-standards/blob/psr-1-style-guide/proposed/PSR-2-advanced.md</a>
-
-##### Using PHP PSR-1 and PSR-2 Sniff
-
-A CodeSniffer sniff to check against the PSR-x Coding Standard can be
-used as well. In that case you can select a different standard than
-Joomla.
-
-##### Utiliser le Style de Code Joomla
-
-C'est bien de pouvoir vérifier que les normes sont respectées. C'est
-encore mieux si PhpStorm vous aide à formater correctement pendant le
-codage. To use the Joomla code style in PhpStorm
-
-1.  Open Settings (CTRL-ALT-S / CMD-,)
-2.  Go to Editor
-3.  Click on Code Style
-4.  Select Joomla from the Scheme select box
-
-#### PhpStorm / Méthode Alternative
-
-**NOTE**: This method is **outdated**, but it might be useful if you are
-looking for a different integration. It also demonstrates the use of
-external tools in PhpStorm - so it *shouldn't be deleted*.
-
-The Code Sniffer can also be integrated easily as an external tool.
-PhpStorm will display the output in the console, including click-able
-links containing line and column numbers to the files that contain
-errors.
-
-- Click on "Settings" and search for "External tools"
-- Click "Add..."
-- Choose a "Name", "Group" and "Description".
-- Click "Output Filters"
-  - Click "Add...", Choose a name and enter under "Regular expression to
-    match output" the value: `$FILE_PATH$:$LINE$:$COLUMN$`
-- "Program": Search for the phpcs executable on your system. You have to
-  set the path to the *phpcs.bat* from the installed PHP_CodeSniffer
-  PEAR package
-  - For Unix based systems, the path is something like /usr/bin/phpcs
-  - In XAMPP (windows), you can find the file in the PHP root folder
-    (e.g. C:\xampp\php\phpcs.bat)
-- "Parameters":
-  - `--standard=/build/phpcs/Joomla` The path to the Joomla! coding
-    standards.
-  - `--report=emacs` The will generate a simple list containing links to
-    the error files
-  - Optionally you may want to specify `-p` for "progress" or `-n` for
-    "errors only".
-  - The last parameter has to be `$FilePath$` specifying the file or
-    folder you want to sniff.
-
-A typical "Parameters" line on a Linux system might look like this:
-
-    -np --standard=/home/elkuku/libs/joomla/build/phpcs/Joomla --report=emacs $FilePath$
-
-You may now right click any file or folder and choose the sniffer from
-the context menu or add a new tool bar button with a nice Joomla! logo
-<img src="https://docs.joomla.org/images/6/67/Icon-16-joomla.png"
-decoding="async" data-file-width="16" data-file-height="16" width="16"
-height="16" alt="Icon-16-joomla.png" />.
-
-### Netbeans
-
-Netbeans has the sniffer functionality integrated into the core system.
-
-1.  Start your Netbeans IDE
-2.  Open Tools =\> Options =\> PHP =\> Code Analysis =\> Code Sniffer
-3.  You have to set the path to *phpcs.bat* from the installed
-    PHP_CodeSniffer PEAR package
-    - For Unix based systems the path is something like /usr/bin/phpcs
-    - In XAMPP (windows) you can find the file in the PHP root folder
-      (e.g. C:\xampp\php\phpcs.bat)
-4.  As "Default Standard," choose "Joomla" to use the Joomla! standard
-5.  Now you can click *OK* to start sniffing
-6.  Open from the top menu Source =\> Inspect...
-7.  Enjoy
-
-### Eclipse
-
-<img
-src="https://docs.joomla.org/images/thumb/4/44/Eclipse_pti.png/200px-Eclipse_pti.png"
-class="thumbimage" decoding="async"
-srcset="https://docs.joomla.org/images/thumb/4/44/Eclipse_pti.png/300px-Eclipse_pti.png 1.5x, https://docs.joomla.org/images/thumb/4/44/Eclipse_pti.png/400px-Eclipse_pti.png 2x"
-data-file-width="1388" data-file-height="762" width="200"
-height="110" />
-<a href="https://docs.joomla.org/File:Eclipse_pti.png" class="internal"
-title="Enlarge"></a>1) Eclipse PTI
-
-Installation is a breeze and follows the usual pattern:
-
-1.  `Help => Install New Software...`
-2.  `Work with:` Fill in one of the update site URLs found here:
-    <a href="http://www.phpsrc.org/eclipse/pti/" class="external free"
-    target="_blank"
-    rel="nofollow noreferrer noopener">http://www.phpsrc.org/eclipse/pti/</a>
-3.  Select the desired tools
-4.  Restart Eclipse.
-
-<img
-src="https://docs.joomla.org/images/thumb/a/a1/Eclipse_pti_settings.png/150px-Eclipse_pti_settings.png"
-class="thumbimage" decoding="async"
-srcset="https://docs.joomla.org/images/thumb/a/a1/Eclipse_pti_settings.png/225px-Eclipse_pti_settings.png 1.5x, https://docs.joomla.org/images/thumb/a/a1/Eclipse_pti_settings.png/300px-Eclipse_pti_settings.png 2x"
-data-file-width="973" data-file-height="819" width="150" height="126" />
-<a href="https://docs.joomla.org/File:Eclipse_pti_settings.png"
-class="internal" title="Enlarge"></a>2) Paramètres Eclipse PTI
-
-You are now able to sniff for code violations against common standards
-like PEAR or Zend etc.
-
-To sniff against your own standards, specify their location and activate
-them (see screen shot 2)
-
-1.  `Window => Preferences`
-2.  `PHP Tools => PHP CodeSniffer`
-
-Joyeux reniflage.
-
-### Geany
-
-- Open a PHP file. (Otherwise the build menu is not accessible.) See
-  this <a
-  href="http://static.xscreenshot.com/2016/07/13/08/screen_6bc0692cf995702a1e379b39643d0c2d"
-  class="external text" target="_blank"
-  rel="nofollow noreferrer noopener">Screenshot</a>
-- On the top menu, select Build-\>Set Build Commands.
-- Select the second field and name it as you wish. Enter this code in
-  the Command:
+```sh
+phpcs --standard=PSR12 --ignore='libraries/*' --exclude=Generic.Files.LineLength .
+```
+
+Vous pouvez trouver la règle qui est enfreinte avec cette commande :
+
+```sh
+phpcs -s yourfile.php
+```
+
+### Exceptions Joomla
+
+Pour le développement d'une extension en utilisant un IDE, vous pouvez décider d'utiliser le standard PSR12 sans aucune exception. Joomla dispose d'un [ensemble de règles personnalisé](https://github.com/joomla/joomla-cms/blob/5.2-dev/ruleset.xml) qui permet de nombreuses exceptions. Il est utilisé pour la validation de l'ensemble de l'installation de Joomla lors des tests système.
+
+## Correction des infractions
+
+Le fichier php unique qui `A DÉTECTÉ 132 ERREURS ET 3 AVERTISSEMENTS AFFECTANT 116 LIGNES` montré ci-dessus peut être principalement corrigé comme suit :
+
+```sh
+phpcbf --standard=PSR12 .
+
+PHPCBF RESULT SUMMARY
+-----------------------------------------------------------------------------------
+FILE                                                               FIXED  REMAINING
+-----------------------------------------------------------------------------------
+/Users/ceford/git/j4xdemos-plg-toc/j4xdemostoc/j4xdemostoc.php     131    4
+-----------------------------------------------------------------------------------
+A TOTAL OF 131 ERRORS WERE FIXED IN 1 FILE
+-----------------------------------------------------------------------------------
+
+Time: 232ms; Memory: 8MB
+```
+
+Exécuter à nouveau l'utilitaire phpcs montre quels problèmes subsistent :
+
+```sh
+phpcs --standard=PSR12 .
+
+FILE: /Users/ceford/git/j4xdemos-plg-toc/j4xdemostoc/j4xdemostoc.php
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AND 3 WARNINGS AFFECTING 4 LINES
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   1 | WARNING | A file should declare new symbols (classes, functions, constants, etc.) and cause no other side effects, or it should execute logic with side effects, but should not do both. The first
+     |         | symbol is defined on line 23 and the first side effect is on line 11.
+  23 | ERROR   | Each class must be in a namespace of at least one level (a top-level vendor name)
+ 132 | WARNING | Line exceeds 120 characters; contains 168 characters
+ 133 | WARNING | Line exceeds 120 characters; contains 141 characters
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Time: 127ms; Memory: 8MB
+```
+
+Conclusion : une extension codée pour une version antérieure de Joomla et utilisant un standard de codage différent nécessite maintenant quelques ajustements !
+
+## Installation dans les IDE
+
+La plupart des environnements de développement intégrés peuvent utiliser le détecteur de code pendant que vous travaillez ou lorsque vous enregistrez un fichier.
+
+### Installation dans VSCode
+
+Dans VSCode (et/ou VScodium), sélectionnez l'icône Extensions, recherchez PHP_CodeSniffer et installez-le. Il nécessite une configuration :
+
+1. Dans **Paramètres**, trouvez PHP_CodeSniffer
+2. Réglez le champ **PHP Code Sniffer → Exécutable :** pour correspondre à l'emplacement de votre binaire phpcs.
+3. Dans la liste **PHP Code Sniffer: Standard**, sélectionnez **PSR12**.
+
+Fermez et vous êtes prêt à agir.
+
+Certains des problèmes montrés ci-dessus peuvent être corrigés avec les directives PSR1.
+
+```php
+<?php
+
+/**
+ * @package     Whatever
+ *
+ * @phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace
+ */
+
+use joomla\CMS\...
+
+// phpcs:disable PSR1.Files.SideEffects
+\defined('_JEXEC') or die;
+// phpcs:enable PSR1.Files.SideEffects
+```
+
+D'autres nécessitent une réflexion!
+
+Après l'installation dans VSCode, les violations du style de code seront détectées et marquées d'un soulignement ondulé rouge. Survolez le problème pour voir un message et une solution potentielle, comme dans cet exemple :
+
+```txt
+Header blocks must be separated by a single blank line
+PHP_CodeSniffer(PSR12.Files.FileHeader.SpacingAfterBlock)
+```
+
+<div class="alert alert-warning">
+Les sections suivantes doivent être mises à jour !
+</div>
+
+### Installation dans PhpStorm
+
+Code Sniffer est pris en charge par défaut dans PhpStorm. Allez dans Paramètres et sous **Éditeur → Inspections** vous verrez la liste des sniffers que vous avez installés.
+
+#### Définir le chemin vers le vérificateur de code
+
+1.  Ouvrir les Paramètres (CTRL-ALT-S / CMD-,)
+2.  Aller à Langues et Cadres
+3.  Cliquer sur PHP
+4.  Cliquer sur Outils de Qualité
+5.  Cliquer sur la flèche déroulante de PHP cs fixer
+6.  La configuration est réglée sur Local par défaut
+7.  Cliquer sur les 3 points derrière pour ouvrir l'écran de configuration
+8.  La première option est le chemin du PHP Code Sniffer (phpcs)
+9.  Cliquer sur les 3 points derrière le chemin pour sélectionner l'emplacement du fichier phpcs. Voir ci-dessus où phpcs peut être installé sur votre site
+10. Cliquer sur Valider pour s'assurer que le chemin est correct et que phpcs fonctionne
+11. Cliquer sur OK
+
+#### Activer le style de code
+
+1.  Ouvrir Paramètres (CTRL-ALT-S / CMD-,)
+2.  Aller à Éditeur
+3.  Cliquer sur Inspections
+4.  Dans la liste, aller à PHP
+5.  Cliquer sur Validation PHP Code Sniffer
+6.  Cliquer sur la case à cocher derrière pour l'activer
+7.  Cliquer sur le bouton Recharger (2 flèches) pour forcer un rechargement des règles depuis le disque
+8.  Joomla devrait maintenant être disponible dans la liste. Voir l'image suivante.
+9.  Cliquer sur OK
+
+![CodeSniffer in PHPStorm](../../../en/images/getting-started/core-phpstorm-code-sniffer.png)
+
+### Installation dans Netbeans
+
+Netbeans a la fonctionnalité sniffer intégrée dans le système central.
+
+1. Lancez votre IDE Netbeans
+2. Ouvrez **Outils → Options → PHP → Analyse de Code → Code Sniffer**
+3. Vous devez définir le chemin vers *phpcs.bat* à partir du package PEAR PHP_CodeSniffer installé
+    - Pour les systèmes basés sur Unix, le chemin est quelque chose comme /usr/bin/phpcs
+    - Dans XAMPP (Windows), vous pouvez trouver le fichier dans le dossier racine PHP (par ex. C:\xampp\php\phpcs.bat)
+4. Comme "Standard par Défaut", choisissez "Joomla" pour utiliser le standard Joomla!
+5. Maintenant, vous pouvez cliquer sur *OK* pour commencer l'analyse
+6. Ouvrez depuis le menu du haut **Source → Inspecter...**
+7. Profitez-en
+
+### Installation dans Eclipse
+
+1. **Aide → Installer un nouveau logiciel...**
+2. **Travailler avec** Remplissez l'une des URL du site de mise à jour.
+3. Sélectionnez les outils désirés.
+4. Redémarrez Eclipse.
+5. **Fenêtre → Préférences**
+6. **Outils PHP → PHP CodeSniffer**
+
+![Eclipse PTI settings](../../../en/images/getting-started/core-eclipse-pti-settings.png)
+
+Vous êtes maintenant capable de détecter les violations de code par rapport aux normes courantes.
+
+![Codesniffer in Eclipse](../../../en/images/getting-started/core-eclipse-pti.png)
+
+### Installation dans Geany
+
+- Ouvrez un fichier PHP. (Sinon, le menu de construction n'est pas accessible.)
+- Dans le menu supérieur, sélectionnez **Build → Set Build Commands**.
+- Sélectionnez le deuxième champ et nommez-le comme vous le souhaitez. Entrez ce code dans la commande :<br>
   `phpcs --standard=Joomla "%f" | sed -e 's/^/%f |/' | egrep 'WARNING|ERROR'`
-- Enter this code in the Error Regular Expression field:
-  `(.+) [|]\s+([0-9]+)` See this
-  <a href="http://view.xscreenshot.com/ef00820cf7c017ce659c8e9f0b02d3ae"
-  class="external text" target="_blank"
-  rel="nofollow noreferrer noopener">Screenshot</a>
-- Select OK.
-- If the Message Window is not open, display it by selecting it in the
-  top View menu.
-- When viewing any PHP file, press F9 to see the errors found.
-  <a href="http://view.xscreenshot.com/8704b9fd1bda3f841364a0ffa28a54ae"
-  class="external text" target="_blank"
-  rel="nofollow noreferrer noopener">Screenshot</a>
+- Entrez ce code dans le champ d'expression régulière d'erreur : `(.+) [|]\s+([0-9]+)`
+- Sélectionnez OK.
+- Si la fenêtre de message n'est pas ouverte, affichez-la en la sélectionnant dans le menu supérieur Affichage.
+- Lors de la visualisation de tout fichier PHP, appuyez sur F9 pour voir les erreurs trouvées.
 
-### Atom
+### Installation dans Atom
 
 - Installez phpcs et les standards Joomla comme décrit ci-dessus.
-- Dans **Atom \> File \> Settings \> Install** installer
-  **linter-phpcs** ainsi que toute ses dépendances.
-- Dans **Atom \> File \> Settings \> Packages \> linter-phpcs \>
-  Settings** ajuster
-  - **Executable Path** pour le chemin de votre phpcs
-  - **Code Standard Or Config File**: Joomla
-  - **Tab Width**: 4
+- Dans **Atom → Préférences → Installer**, installez **linter-phpcs** et toutes ses exigences.
+- Dans **Atom → Préférences → Packages → linter-phpcs → Paramètres**, ajustez
+  - **Chemin exécutable** au chemin de votre phpcs
+  - **Norme de code ou fichier de configuration** : PSR12
+  - **Largeur de tabulation** : 4
 
-### Références
+*Traduit par openai.com*
 
-- <a href="https://github.com/joomla/coding-standards"
-  class="external free" target="_blank"
-  rel="nofollow noreferrer noopener">https://github.com/joomla/coding-standards</a> -
-  Joomla! Coding Standards
-- <a href="http://www.phpsrc.org/" class="external free" target="_blank"
-  rel="nofollow noreferrer noopener">http://www.phpsrc.org/</a> PTI -
-  PHP tools integration pour Eclipse
-- <a href="http://sourceforge.net/projects/phpmdnb/" class="external free"
-  target="_blank"
-  rel="nofollow noreferrer noopener">http://sourceforge.net/projects/phpmdnb/</a>
-  Netbeans plugin
-- <a
-  href="http://hakre.wordpress.com/2010/03/06/php-code-sniffer-eclipse-and-wordpress/"
-  class="external free" target="_blank"
-  rel="nofollow noreferrer noopener">http://hakre.wordpress.com/2010/03/06/php-code-sniffer-eclipse-and-wordpress/</a> -
-  Excellent article. Il suffit de changer "Wordpress" pour "Joomla!" ;)

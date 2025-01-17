@@ -1,56 +1,32 @@
-<!-- Filename: J4.x:Setting_Up_Your_Local_Environment / Display title: Paramétrer votre environnement local -->
+<!-- Filename: J4.x:Setting_Up_Your_Local_Environment / Display title: Configuration d'un environnement local -->
 
-<span id="main-portal-heading">Didacticiel  
-Comment paramétrer un environnement local pour Joomla 4</span> Joomla! 
-4.x
+## Guide de Démarrage Rapide
 
-Avec Joomlaǃ 4, nous avons changé le processus de développement. Il
-n'est plus possible de cloner le dépôt et d'avoir une installation
-Joomla utilisable. Nous suivons ici les meilleures pratiques et mettons
-en place un processus de construction pour le CMS.
+Pour configurer un test, vous aurez besoin d'une pile logicielle comprenant Apache, MySQL et PHP. Les étapes requises sont couvertes ailleurs dans ce manuel. En cas de doute, utilisez une pile logicielle adaptée à votre plateforme.
 
-## Guide d'installation rapide
+## Outils supplémentaires
 
-Les étapes pour configurer votre environnement de développement
-dépendent de votre système d'exploitation. Nous ne pouvons pas écrire de
-documentation pour tous les systèmes d'exploitation (OS), donc vous
-devrez trouver des manuels adéquats sur votre moteur de recherche
-préféré.
+Pour tester les demandes de tirage de Joomla et contribuer au code principal de Joomla, vous aurez besoin d'outils supplémentaires, tous facilement installables, souvent avec une commande en une ligne :
 
-### Outils nécessaires
+1. **Composer** - pour gérer les dépendances PHP de Joomla. Lisez la [documentation de Composer](https://getcomposer.org/doc/00-intro.md) pour obtenir de l'aide avec l'installation.
+2. **Node.js** - pour compiler les fichiers JavaScript et SASS de Joomla. Lisez la [documentation de Node.js](https://nodejs.org/en/) pour obtenir de l'aide avec l'installation.
+3. **Git** - pour la gestion des versions. Lisez la [documentation de Git](https://git-scm.com/) pour obtenir de l'aide avec l'installation.
 
-1.  PHP - fondamentalement le même que celui dont vous avez besoin pour
-    exécuter un site Joomla, mais vous avez besoin de la version PHP CLI
-    (interface en ligne de commande) (voir la page [Configuration d'un
-    serveur LAMPP pour le développement
-    PHP](https://docs.joomla.org/Configuring_a_LAMPP_server_for_PHP_development "Special:MyLanguage/Configuring a LAMPP server for PHP development")).
-2.  Composer - pour gérer les dépendances PHP de Joomla - pour obtenir
-    de l'aide à l'installation de Composer, lisez la documentation sur
-    <a href="https://getcomposer.org/doc/00-intro.md" class="external free"
-    target="_blank"
-    rel="nofollow noreferrer noopener">https://getcomposer.org/doc/00-intro.md</a>
-3.  Node.js - pour compiler les fichiers JavaScript et SASS de Joomla -
-    pour obtenir de l'aide pour installer Node.js, veuillez suivre les
-    instructions disponibles sur
-    <a href="https://nodejs.org/en/" class="external free" target="_blank"
-    rel="nofollow noreferrer noopener">https://nodejs.org/en/</a>
-4.  Git - pour la gestion des versions
+## Étapes pour configurer un site de test local
 
-### Etapes pour paramétrer votre environnement local
+1. Allez sur le [référentiel Joomla! sur GitHub](https://github.com/joomla/joomla-cms).
+2. Sélectionnez la branche Joomla sur laquelle travailler. Cela sélectionne les instructions README appropriées.
+3. Faites défiler la page jusqu'à la section **Étapes pour configurer l'environnement local :** du texte README.
+4. Suivez les étapes énumérées là-bas. Vous pouvez changer le nom du dossier joomla-cms cloné pour faire autant de clones que vous le souhaitez pour différents usages.
+5. Créez une base de données et installez Joomla, mais ne supprimez pas le dossier d'installation à la fin du processus d'installation.
 
-1.  Cloner le dépôt
-2.  Checkout branch *4.1-dev*
-3.  Exécutez `composer install` depuis la racine du dépôt git (vous
-    pouvez ajouter --ignore-platform-reqs si vous n'avez pas le PHP-LDAP
-    installé localement et que vous n'en avez pas besoin).
-4.  Exécutez `npm ci` depuis la racine du dépôt git (à noter que vous
-    devez avoir une version de npm supérieure ou égale à 5.7 pour
-    effectuer cela -\> exécutez `npm install -g npm@lts` pour mettre à
-    jour la version de npm dans la version lts).
+## Mise à jour de Joomla
 
-Les utilisateurs Linux et OSX peuvent créer l'alias de bash suivant en
-ajoutant les lignes suivantes dans le fichier ~/.bashrc :
+De temps en temps, vous pourriez avoir besoin de mettre à jour un clone de Joomla. C'est une commande en une ligne qui est généralement rapide. Cependant, il est souvent nécessaire de reconstruire les fichiers CSS et JavaScript, ce qui est un processus plus complexe et plus long.
 
+Les utilisateurs de Linux et OSX peuvent configurer l'alias bash suivant en plaçant ce qui suit dans le *fichier ~/.bashrc*:
+
+```sh
     alias jclean="rm -rf administrator/templates/atum/css; \
     rm -rf templates/cassiopeia/css; \
     rm -rf administrator/templates/system/css; \
@@ -61,101 +37,65 @@ ajoutant les lignes suivantes dans le fichier ~/.bashrc :
     rm -f administrator/cache/autoload_psr4.php; \
     rm -rf installation/template/css"
     alias jinstall="jclean; composer install; npm ci"
+```
 
-Ceci va supprimer tous les fichiers compilés de votre système et
-effectuer une installation propre en une seule commande par appel de
-`jinstall` dans l'installation de Joomla!.
+Cela supprimera tous les fichiers compilés et exécutera une nouvelle installation en une seule commande en appelant `jinstall` à l'intérieur de votre installation Joomla. Vous pouvez également utiliser la commande `jclean` pour revenir à une autre branche de Joomla.
 
-## Guide d'installation un peu plus détaillé
+**Remarque :** Vous devrez peut-être exécuter `composer install` avec l'option `--ignore-platform-reqs` pour ignorer les exigences de plateforme spécifiées dans Composer. C'est-à-dire, si vous n'avez pas l'extension LDAP de PHP installée.
 
-Joomla n'est pas différent de beaucoup d'autres outils web de nos jours.
-Il a une grande partie PHP et il a de plus en plus de code JavaScript.
-Alors que le codage PHP n'a pas besoin d'autant de préparation,
-JavaScript a besoin de beaucoup d'outils. La raison principale est que
-personne n'écrit le code d'une manière que chaque navigateur comprend,
-de sorte que le code doit être transposé, par exemple de ES6 à une
-version compatible de JavaScript. La même chose est vraie pour le CSS,
-pour Joomla nous utilisons SASS et ceci sera converti en CSS natif pour
-que n'importe quel navigateur le comprenne. Comme la mise en place d'un
-environnement de développement est un peu plus compliquée, mais
-l'outillage rend le codage plus pratique. Grâce aux observateurs et à la
-recharge automatique de votre navigateur, vous pouvez voir votre
-changement en temps réel.
+### Modifications de la base de données
 
-### PHP
+Si une mise à jour de Joomla inclut des modifications de la base de données, vous devrez peut-être trouver les modifications individuelles et les exécuter manuellement ou recommencer avec un nouveau clone.
 
-Il devrait suffire d'exécuter `composer install` car cela installera les
-dépendances PHP indiquées dans le fichier composer.lock. Vous pouvez le
-faire autant de fois que vous le souhaitez, il n'installera de nouveaux
-paquets que lorsque le fichier composer.lock sera modifié. N'exécutez
-pas `composer update` car cela mettra à jour tous les paquets vers des
-versions plus récentes et mettra à jour le fichier composer.lock.
+## Scripts Node/npm
 
-Note : Vous pouvez avoir besoin d'exécuter `composer install` avec
-l'option `--ignore-platform-reqs` pour ignorer les exigences de la
-plate-forme spécifiées dans Composer, c'est-à-dire si vous n'avez pas
-l'extension LDAP de PHP installée.
+L'installation de Joomla à partir d'un clone de dépôt utilise deux commandes :
 
-### Scripts Node/npm
+- **composer install** Installez tous les paquets composer nécessaires.
+- **npm ci** Installez tous les paquets npm nécessaires.
 
-Node.js est livré avec un gestionnaire de paquets appelé NPM (en quelque
-sorte le même que Composer). NPM a une commande `run` et nous avons
-préparé quelques scripts pour vous faciliter la vie. Vous devez exécuter
-les commandes à la racine du répertoire.
+Node.js est fourni avec un gestionnaire de paquets appelé NPM qui possède une commande `run`. Certains scripts sont disponibles pour accélérer le processus de construction si seuls les fichiers CSS ou JavaScript ont été modifiés.
 
-#### npm run build:css
+### npm run build:css
 
-Il compilera les fichiers SASS en CSS et créera les fichiers minifiés.
+Cette commande compile les fichiers SASS en CSS et crée également les fichiers minifiés.
 
-#### npm run build:js
+### npm run build:js
 
-Il compilera et transposera les fichiers JavaScript au bon format et
-créera des fichiers minifiés.
+Cette commande compile et transpile les fichiers JavaScript au format correct et crée des fichiers minimisés.
 
-#### npm run watch:js
+### npm exécuter watch
 
-C'est la même chose avec la commande `build:js` mais cela surveillera
-les changements et construira automatiquement les fichiers mis à jour
-dans le répertoire des contenus.
+Cette commande est identique à la commande `build:js` mais elle surveillera les modifications et construira automatiquement les fichiers mis à jour dans le répertoire media. Les fichiers SASS ne sont pas encore inclus.
 
-#### npm run lint:js
+### npm exécuter lint:js
 
-Ceci exécutera un contrôle de syntaxe sur tous les fichiers JavaScript
-ES6 par rapport aux règles de codage javascript. Pour plus
-d'informations sur les règles de codage Joomlaǃ 4, lisez le <a
-href="https://developer.joomla.org/coding-standards/introduction.html%7C"
-class="external text" target="_blank" rel="noreferrer noopener">manuel
-des règles de codage</a>.
+Cette commande effectue une vérification de la syntaxe sur tous les fichiers JavaScript ES6 selon la norme de code JavaScript. Pour plus d'informations, consultez le [manuel des normes de codage Joomla](https://developer.joomla.org/coding-standards/introduction.html).
 
-#### test d'exécution npm
+### npm exécute le test
 
-Ceci va s'exécuter au-dessus de la suite de tests JavaScript.
+Cette commande exécutera une suite de tests JavaScript.
 
-## Problèmes possibles
+## Problèmes Possibles
 
-When running composer install you can run into these errors
+Lors de l'exécution de composer install, vous pouvez rencontrer ces erreurs.
 
+```sh
     Problem 1
         - Installation request for joomla/ldap 2.0.0-beta -> satisfiable by joomla/ldap[2.0.0-beta].
         - joomla/ldap 2.0.0-beta requires ext-ldap * -> the requested PHP extension ldap is missing from your system.
     Problem 2
         - Installation request for symfony/ldap v5.1.5 -> satisfiable by symfony/ldap[v5.1.5].
         - symfony/ldap v5.1.5 requires ext-ldap * -> the requested PHP extension ldap is missing from your system.
+```
 
-The solution is to run the composer install with the
-`--ignore-platform-reqs` option to ignore platform requirements
-specified in Composer. That is, if you do not have PHP's LDAP extension
-installed.
+La solution consiste à exécuter la commande `composer install` avec l'option `--ignore-platform-reqs` pour ignorer les exigences de plateforme spécifiées dans Composer. C'est-à-dire, si vous n'avez pas l'extension LDAP de PHP installée.
 
+```sh
     composer install --ignore-platform-reqs
+```
 
-Si vous obtenez une erreur de login telle que celle ci-dessous, alors
-supprimez le fichier `\library\autoload_psr4.php` comme montré sur la
-seconde image.
+Si vous recevez une erreur de connexion, supprimez le fichier `administrator/cache/autoload_psr4.php`.
 
-<img
-src="https://docs.joomla.org/images/thumb/b/b3/Install-error.png/400px-Install-error.png"
-class="thumbborder" decoding="async"
-srcset="https://docs.joomla.org/images/thumb/b/b3/Install-error.png/600px-Install-error.png 1.5x, https://docs.joomla.org/images/thumb/b/b3/Install-error.png/800px-Install-error.png 2x"
-data-file-width="1920" data-file-height="1080" width="400" height="225"
-alt="Login After Install Error" />
+*Traduit par openai.com*
+
