@@ -389,7 +389,7 @@ Collapse est largement utilisé dans Joomla et vous n'aurez peut-être pas besoi
 
 Résultat :
 
-![Bootstrap collaps](../../../en/images/coding-examples/coding-examples-collapse.png)
+![Bootstrap collapse](../../../en/images/coding-examples/coding-examples-collapse.png)
 
 ### Exemple 5 : Menu déroulant
 
@@ -585,7 +585,7 @@ Résultat :
 
 Les étapes impliquées :
 
-- Téléchargez, installez et activez ce plugin : [](https://github.com/ceford/j4xdemos-plg-bscompos/raw/master/plg_j4xdemos_bscompos.zip)
+- Téléchargez, installez et activez ce [plugin](https://github.com/ceford/j4xdemos-plg-bscompos/raw/master/plg_j4xdemos_bscompos.zip)
 - Dans l'article, ajoutez le texte sur lequel le plugin agit, par exemple {bscompos modal carousel} déclenchera le chargement du JavaScript nécessaire pour prendre en charge une boîte de dialogue modale et un carrousel. Le plugin supprime le texte déclencheur et les balises (désormais) vides qui l'entourent.
 - Incluez le code HTML du composant Bootstrap directement dans l'article ou dans un module inclus dans l'article. Il y a un exemple de code HTML ci-dessous pour un modal simple et un modal contenant un carrousel. Notez que cela ne fonctionnera pas si le code HTML se trouve dans un module à un emplacement de modèle.
 - Cela fonctionnera également pour un module personnalisé standard si l'option Préparer le contenu est réglée sur Oui.
@@ -784,4 +784,3 @@ Ce code recherche les noms de classes définis dans mod_custom et effectue l'app
 ![Bootstrap modal carousel](../../../en/images/coding-examples/coding-examples-modal-carousel.png)
 
 *Traduit par openai.com*
-
