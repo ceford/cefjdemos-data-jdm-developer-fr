@@ -8,7 +8,7 @@ Documentation</span> Joomla! 4.x
 
 **Joomla! 4.x** est livré avec des systèmes de fichiers cloud pour le **Gestionnaire de médias** par défaut. Avec l'ancienne API, créer des systèmes de fichiers personnalisés était une tâche difficile. Grâce à la nouvelle API, il est maintenant facile de créer un système de fichiers personnalisé. Si vous souhaitez utiliser un service cloud avec le nouveau Gestionnaire de médias, il est conseillé d'utiliser **OAuth2.0**.
 
-Ce document vous guidera à travers des étapes importantes pour créer votre propre **Plugin de Système de Fichiers** afin d'étendre le **Gestionnaire de Médias**. Avant de procéder, veuillez vous assurer que vous avez les connaissances de base sur la façon de développer un plugin pour Joomla. [Ce tutoriel](https://docs.joomla.org/J3.x:Creating_a_Plugin_for_Joomla "Special:MyLanguage/J3.x:Creating a Plugin for Joomla") devrait vous aider.
+Ce document vous guidera à travers des étapes importantes pour créer votre propre **Plugin de Système de Fichiers** afin d'étendre le **Gestionnaire de Médias**. Avant de procéder, veuillez vous assurer que vous avez les connaissances de base sur la façon de développer un plugin pour Joomla. [Ce tutoriel](https://docs.joomla.org/J3.x:Creating_a_Plugin_for_Joomla) devrait vous aider.
 
 ## Créez votre plugin de système de fichiers
 
