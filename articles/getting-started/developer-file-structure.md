@@ -14,7 +14,7 @@ Dans cet exemple, les sites de test Joomla sont situés dans des sous-dossiers d
 
 Voici une capture d'écran d'une partie de la liste du dossier Sites montrant une sélection de nombreux sites de test :
 
-![multiple sites on mac](../../../en/images/getting-started/developer-file-structure-mac-sites.png)
+![multiple sites on mac](../../../en/images/getting-started/developer-file-structure/01-multiple-sites-on-mac.png)
 
 Chacun est accessible par son nom de sous-dossier. Exemples :
 
@@ -27,7 +27,7 @@ Il existe des circonstances dans lesquelles vous pourriez préférer créer des 
 
 Si vous ne l'avez pas déjà fait, vous devrez vous familiariser avec la structure d'un site web Joomla. L'illustration suivante montre un arbre typique de fichiers et dossiers Joomla, avec le dossier Administrator développé pour montrer son contenu.
 
-![joomla file structure with administrator expanded](../../../en/images/getting-started/developer-file-structure-mac-joomla.png)
+![joomla file structure with administrator expanded](../../../en/images/getting-started/developer-file-structure/02-file-structure-admin-expanded.png)
 
 C'est ici que le code fonctionnel sera installé. Le code source est ailleurs.
 
@@ -35,7 +35,7 @@ C'est ici que le code fonctionnel sera installé. Le code source est ailleurs.
 
 La localisation de votre code d'extension est un choix personnel. J'aime conserver mon code d'extension dans un arborescence de fichiers adaptée à la création d'un fichier zip installable. La base de mon arborescence est /Users/username/git parce que je sais écrire git et que j'utilise git pour le contrôle de version. Vous n'êtes pas obligé de faire cela - git sera abordé dans un tutoriel séparé. Mon dossier parent git contient de nombreux sous-dossiers qui peuvent chacun utiliser des dossiers git distincts pour le contrôle de version. Voici une capture d'écran montrant une liste partielle de projets :
 
-![joomla file structure project folders](../../../en/images/getting-started/developer-file-structure-mac-project-folders.png)
+![joomla file structure project folders](../../../en/images/getting-started/developer-file-structure/03-project-folders.png)
 
 Remarquez que certains des noms de dossiers commencent par `j4xdemos`, que j'ai adopté pour utiliser comme première partie de l'espace de noms utilisé pour mes projets créés à des fins de tutoriels Joomla 4. Ce n'est pas nécessaire en tant que partie du nom de dossier, mais c'est quelque chose à considérer : la première partie de votre espace de noms doit être quelque chose d'unique pour vous ou votre organisation. J'ai depuis adopté `cefjdemos` comme préfixe de mon espace de noms, car il est plus personnel et non spécifique à une version de Joomla.
 
@@ -45,7 +45,7 @@ Prenons j4xdemos-com-mywalks comme exemple, tout le code qui sera intégré à l
 
 Dans l'illustration suivante, le dossier j4xdemos-com-mywalks a été ouvert dans VSCodium pour montrer la structure du code du projet. Le fichier mywalks.xml est un fichier manifeste qui indique à Joomla quoi installer et où. Les dossiers admin et site contiennent le code qui ira dans administrator/components/com_mywalks et components/com_mywalks.
 
-![Project folder open in vscodium](../../../en/images/getting-started/developer-file-structure-mac-vscodium.png)
+![Project folder open in vscodium](../../../en/images/getting-started/developer-file-structure/04-project-open-in-vscodium.png)
 
 Il devrait être évident que même un petit composant nécessite un grand nombre de dossiers et de fichiers. Il existe des outils de création standards pour les extensions qui permettent de créer rapidement un composant squelette. Ils sont traités ailleurs. À faire
 

@@ -6,7 +6,7 @@ Les nouveaux venus peuvent avoir l'impression que MySQL et MariaDB sont des base
 
 La capture d'écran suivante montre une partie d'une liste de plus de 30 bases de données créées pour tester divers projets d'installations et d'extensions Joomla.
 
-![Phypadmin screenshot of list of databases](../../../en/images/getting-started/phpmyadmin-databases.png)
+![Phypadmin screenshot of list of databases](../../../en/images/getting-started/databases/01-phpmyadmin-list-of-databases.png)
 
 Une note annexe : les classements sont principalement utf8mb4_0900_ai_ci :
 

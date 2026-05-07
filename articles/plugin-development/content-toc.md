@@ -38,7 +38,7 @@ cefjdemos-plg-toc
 
 Voici la structure telle qu'elle apparaît dans l'IDE VSCode ou VSCodium :
 
-![Plugin development file structure in vscodium](../../../en/images/plugins/cefjdemostoc-vscodium.png)
+![Plugin development file structure in vscodium](../../../en/images/plugin-development/content-toc/01-file-structure-in-vscodium.png)
 
 ## Le Fichier Manifest
 
@@ -238,7 +238,7 @@ Le code `default.php` ci-dessus montre comment inclure une feuille de style pers
 
 ## Résultat
 
-![The resulting table of contents](../../../en/images/plugins/cefjdemostoc-result.png)
+![The resulting table of contents](../../../en/images/plugin-development/content-toc/02-result-table-of-contents.png)
 
 *Traduit par openai.com*
 

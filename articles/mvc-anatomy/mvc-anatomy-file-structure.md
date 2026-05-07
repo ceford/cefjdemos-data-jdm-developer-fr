@@ -48,7 +48,7 @@ cefjdemos-com-countrybase
 
 Ceci est la structure dans l'IDE VSCodium :
 
-![Vscodium file structure view](../../../en/images/mvc-anatomy/com-countrybase-vscodium.png)
+![Vscodium file structure view](../../../en/images/mvc-anatomy/com-countrybase-vscodium/01-file-structure.png)
 
 Lors de l'installation, les parties du composant `com_countrybase` sont distribuées à différents emplacements dans la structure de fichiers Joomla :
 - Les fichiers administrateur vont dans `root/administrator/components/com_countrybase`.

@@ -227,7 +227,7 @@ HTMLHelper::_('behavior.keepalive');
 
 Vous pouvez parcourir les ensembles de champs de formulaire et les champs à l'intérieur de chaque ensemble de champs. Cela peut simplifier la sortie de formulaires complexes avec de nombreux onglets.
 
-![country edit form](../../../en/images/mvc-anatomy/com-countrybase-edit-country.png)
+![country edit form](../../../en/images/mvc-anatomy/mvc-anatomy-administrator-edit-files/01-country-edit-form/01-country-edit-form.png)
 
 *Traduit par openai.com*
 

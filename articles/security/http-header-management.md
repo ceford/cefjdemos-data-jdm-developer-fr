@@ -10,7 +10,7 @@ Joomla 4 a introduit un système de gestion des en-têtes HTTP conçu pour aider
 
 Accédez à **Système → Plugins → Système - HTTP Headers** pour accéder au formulaire de configuration du plugin.
 
-![System http headers plugin form](../../../en/images/security/security-http-headers-plugin.png)
+![System http headers plugin form](../../../en/images/security/http-header-management/01-system-http-headers-plugin-form.png)
 
 - **X-Frame Options** Ceci est activé par défaut mais la [documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options) indique qu'il est obsolète et qu'une politique *frame-ancestors* devrait être utilisée à la place.
 - **Referrer-Policy** La valeur par défaut est *strict-origin-when-cross-origin*.
@@ -35,7 +35,7 @@ En utilisant le sous-formulaire **Forcer les en-têtes HTTP**, vous pouvez égal
 
 ### Onglet Strict-Transport-Security (HSTS)
 
-![strict transport security settings](../../../en/images/security/security-http-headers-hsts.png)
+![strict transport security settings](../../../en/images/security/http-header-management/02-strict-transport-security-settings.png)
 
 Utilisez le bouton *Basculer l'aide en ligne* pour obtenir des informations sur chaque paramètre. Référence illustrée :
 
@@ -43,7 +43,7 @@ Utilisez le bouton *Basculer l'aide en ligne* pour obtenir des informations sur 
 
 ### Onglet Content-Security-Policy (CSP)
 
-![Content security policy options](../../../en/images/security/security-http-headers-csp.png)
+![Content security policy options](../../../en/images/security/http-header-management/03-content-security-policy-options.png)
 
 Une fois activée, vous pouvez définir le client où vous souhaitez appliquer le CSP configuré, vous permettant de définir `site`, `administrator` ou `both`. Un CSP devrait être appliqué à la fois sur le frontend et le backend. Références illustrées :
 

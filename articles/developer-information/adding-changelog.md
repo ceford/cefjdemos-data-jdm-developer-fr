@@ -4,7 +4,7 @@ Depuis Joomla 4.0, les développeurs d'extensions peuvent exploiter la capacité
 
 Les modifications d'une version seront présentées de la manière suivante :
 
-![changelog modal view](../../../en/images/developer-information/adding-changelog-example-1.png)
+![changelog modal view](../../../en/images/developer-information/adding-changelog/01-changelog-modal-view.png)
 
 Le journal des modifications est utilisé à deux endroits différents.
 
@@ -12,7 +12,7 @@ Le journal des modifications est utilisé à deux endroits différents.
 
 L'installateur affichera le journal des modifications de la version qui peut être installée si disponible.
 
-![changelog installer view](../../../en/images/developer-information/adding-changelog-update-view.png)
+![changelog installer view](../../../en/images/developer-information/adding-changelog/02-changelog-installer-view.png)
 
 En cliquant sur le bouton Journal des modifications ici, vous verrez le journal des modifications de la nouvelle version disponible.
 
@@ -20,7 +20,7 @@ En cliquant sur le bouton Journal des modifications ici, vous verrez le journal 
 
 Le gestionnaire d'extensions affichera le journal des modifications de l'extension actuellement installée si disponible.
 
-![changelog installer view](../../../en/images/developer-information/adding-changelog-extension-view.png)
+![changelog extension view](../../../en/images/developer-information/adding-changelog/03-changelog-extension-view.png)
 
 Cliquer sur le numéro de version ici affichera le journal des modifications de la version actuellement installée.
 

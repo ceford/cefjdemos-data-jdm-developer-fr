@@ -42,7 +42,7 @@ Supposons que vous ayez installé tout sauf Eclipse.
 
 Il y a un flux de travail décrit dans [Ma première demande de tirage sur Joomla! sur Github](https://docs.joomla.org/My_first_pull_request_to_Joomla!_on_Github) que je ne peux trop louer. Il montre exactement ce que vous devez faire :
 
-![Github work flow](../../../en/images/getting-started/core-work-flow-joomla.png)
+![Github work flow](../../../en/images/getting-started/setting-up-eclipse/01-github-work-flow.png)
 
 Étapes
 

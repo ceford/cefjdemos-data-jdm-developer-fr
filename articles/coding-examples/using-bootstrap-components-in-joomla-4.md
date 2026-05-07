@@ -293,7 +293,7 @@ Les alertes peuvent être utilisées dans le code HTML sans support JavaScript. 
 
 Exemple de résultat d'inclusion d'un module dans un article :
 
-![Bootstrap alert](../../../en/images/coding-examples/coding-examples-alert.png)
+![Bootstrap alert](../../../en/images/coding-examples/bootstrap-components/01-bootstrap-alert.png)
 
 Notez que sans support JavaScript, l'alerte apparaîtra exactement comme ci-dessus, mais un clic sur le bouton de fermeture \[X\] ne fermera pas l'alerte. De plus, l'alerte apparaîtra à chaque chargement de page.
 
@@ -321,7 +321,7 @@ Avec ce style dans le modèle user.css :
     }
 ```
 
-![Bootstrap buttons](../../../en/images/coding-examples/coding-examples-buttons.png)
+![Bootstrap buttons](../../../en/images/coding-examples/bootstrap-components/02-bootstrap-buttons.png)
 
 Les boutons basculent entre le bleu et le vert.
 
@@ -367,7 +367,7 @@ Le Carrousel propose un diaporama parcourant une série d'images ou de volets de
 
 Résultat :
 
-![Bootstrap carousel](../../../en/images/coding-examples/coding-examples-carousel.jpg)
+![Bootstrap carousel](../../../en/images/coding-examples/bootstrap-components/03-bootstrap-carousel.jpg)
 
 ### Exemple 4 : Réduire
 
@@ -389,7 +389,7 @@ Collapse est largement utilisé dans Joomla et vous n'aurez peut-être pas besoi
 
 Résultat :
 
-![Bootstrap collapse](../../../en/images/coding-examples/coding-examples-collapse.png)
+![Bootstrap collapse](../../../en/images/coding-examples/bootstrap-components/04-bootstrap-collapse.png)
 
 ### Exemple 5 : Menu déroulant
 
@@ -410,7 +410,7 @@ Les menus déroulants sont des superpositions contextuelles basculantes pour aff
 
 Résultat :
 
-![Bootstrap dropdown](../../../en/images/coding-examples/coding-examples-dropdown.png)
+![Bootstrap dropdown](../../../en/images/coding-examples/bootstrap-components/05-bootstrap-dropdown.png)
 
 ### Exemple 6 : Modale
 
@@ -439,7 +439,7 @@ Le composant Modal ouvre une boîte de dialogue au centre de l'écran. Il existe
 
 Résultat :
 
-![Bootstrap modal](../../../en/images/coding-examples/coding-examples-modal.png)
+![Bootstrap modal](../../../en/images/coding-examples/bootstrap-components/06-bootstrap-modal.png)
 
 ### Exemple 7 : Hors-canvas
 
@@ -455,7 +455,7 @@ Les popovers sont comme les infobulles mais avec un titre. Ils présentent quelq
 
 Résultat :
 
-![Bootstrap alert](../../../en/images/coding-examples/coding-examples-popover.png)
+![Bootstrap alert](../../../en/images/coding-examples/bootstrap-components/08-bootstrap-popover.png)
 
 ### Exemple 9 : Scrollspy
 
@@ -502,7 +502,7 @@ Texte de l'exemple de code :
 
 Résultat :
 
-![Bootstrap scrollspy](../../../en/images/coding-examples/coding-examples-scrollspy.png)
+![Bootstrap scrollspy](../../../en/images/coding-examples/bootstrap-components/09-bootstrap-scrollspy.png)
 
 De plus, quelques styles sont nécessaires dans user.css :
 
@@ -538,7 +538,7 @@ Les onglets sont souvent utilisés comme éléments de navigation combinés avec
 
 Résultat :
 
-![Bootstrap tab](../../../en/images/coding-examples/coding-examples-tab.png)
+![Bootstrap tab](../../../en/images/coding-examples/bootstrap-components/10-bootstrap-tab.png)
 
 N'oubliez pas de vérifier à la fois les options Onglet et Déroulant pour que la partie déroulante fonctionne.
 
@@ -559,7 +559,7 @@ Les toasts sont des notifications légères conçues pour imiter les notificatio
 
 Résultat :
 
-![Bootstrap toast](../../../en/images/coding-examples/coding-examples-toast.png)
+![Bootstrap toast](../../../en/images/coding-examples/bootstrap-components/11-bootstrap-toast.png)
 
 Notez que la démonstration Bootstrap qui utilise un bouton pour afficher le message Toast nécessite un peu de JavaScript supplémentaire. Il semble que ce composant ait besoin d'un programmeur pour en faire bon usage !
 
@@ -579,7 +579,7 @@ Un infobulle est un petit morceau de texte qui apparaît lorsque l'on survole un
 
 Résultat :
 
-![Bootstrap tooltip](../../../en/images/coding-examples/coding-examples-tooltip.png)
+![Bootstrap tooltip](../../../en/images/coding-examples/bootstrap-components/12-bootstrap-tooltip.png)
 
 ## Approche 2 : Utiliser un plugin de contenu
 
@@ -711,7 +711,7 @@ Ce code recherche les noms de classes définis dans mod_custom et effectue l'app
 - Créez un élément de menu Article Unique.
 - Testez-le :
 
-![Bootstrap modal module in article](../../../en/images/coding-examples/coding-examples-modal-module.png)
+![Bootstrap modal module in article](../../../en/images/coding-examples/bootstrap-components/13-bootstrap-modal-module-in-article.png)
 
 ### Un composant modal contenant un carrousel
 
@@ -781,6 +781,6 @@ Ce code recherche les noms de classes définis dans mod_custom et effectue l'app
 - Créez un nouvel élément de menu pour un article unique : Démo Modal Carrousel
 - Testez-le :
 
-![Bootstrap modal carousel](../../../en/images/coding-examples/coding-examples-modal-carousel.png)
+![Bootstrap modal carousel](../../../en/images/coding-examples/bootstrap-components/14-bootstrap-modal-carousel.png)
 
 *Traduit par openai.com*

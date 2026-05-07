@@ -100,7 +100,7 @@ Dans la Configuration Globale de Joomla, réglez *Système de débogage* sur *Ou
 
 Lorsque vous ouvrez une page contenant le module défectueux, vous verrez une trace de pile indiquant où une erreur a été déclenchée.
 
-![Stack trace](../../../en/images/getting-started/vscode-primer-stack-trace.png)
+![Stack trace](../../../en/images/getting-started/vscode-primer/01-stack-trace.png)
 
 Parfois, l'erreur de codage se situe sur la première ligne de la trace de la pile. Sinon, si l'erreur est déclenchée dans le code de la bibliothèque, par exemple en transmettant des données invalides à une fonction de base de données, l'erreur de codage peut se trouver plus loin dans la liste des appels de fonction.
 
@@ -108,7 +108,7 @@ Parfois, l'erreur de codage se situe sur la première ligne de la trace de la pi
 
 Dans VS Code, utilisez l'élément de menu Fichier / Ouvrir un dossier pour localiser et ouvrir le dossier contenant votre copie locale du code de l'extension *mod_debugme*. Vous devriez voir quelque chose de similaire à ce qui suit :
 
-![VS Code screen](../../../en/images/getting-started/vscode-primer-screen.png)
+![VS Code screen](../../../en/images/getting-started/vscode-primer/02-vscode-screen.png)
 
 Vous pourrez peut-être diagnostiquer le problème simplement en lisant le code. Dans le cas de l'erreur *Classe "DebugHelper" non trouvée*, vous verrez qu'une instruction *use* a été commentée quelques lignes plus haut. Oublier d'insérer une instruction *use* est une erreur courante lors du développement initial !
 
@@ -270,7 +270,7 @@ Quelques problèmes pas si évidents :
 
 Lorsque tout est réparé, voici ce que vous pourriez voir :
 
-![Site view of debugged module working](../../../en/images/getting-started/vscode-primer-debugme-fixed.png)
+![Site view of debugged module working](../../../en/images/getting-started/vscode-primer/03-debugme-fixed.png)
 
 Jours de gâteau ?
 
