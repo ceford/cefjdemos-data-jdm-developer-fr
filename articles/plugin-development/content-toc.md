@@ -1,4 +1,11 @@
-<!-- Filename: J4.x:J4_Plugin_example_-_Table_of_Contents / Display title: Exemple : Table des matières -->
+<!--
+{
+  "source": "https://docs.joomla.org/J4.x:J4_Plugin_example_-_Table_of_Contents",
+  "title": "Exemple : Table des matières ",
+  "description": "", 
+  "author": ""
+}
+-->
 
 ## Introduction
 

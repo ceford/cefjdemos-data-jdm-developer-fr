@@ -1,4 +1,11 @@
-<!-- Filename: J4.x:MVC_Anatomy:_Administrator_Edit_Files / Display title: MVC Anatomie : Fichiers d'édition de l'administrateur -->
+<!--
+{
+  "source": "https://docs.joomla.org/J4.x:MVC_Anatomy:_Administrator_Edit_Files",
+  "title": "MVC Anatomie : Fichiers d'édition de l'administrateur ",
+  "description": "", 
+  "author": ""
+}
+-->
 
 ## Fichiers de données du pays
 
@@ -227,7 +234,7 @@ HTMLHelper::_('behavior.keepalive');
 
 Vous pouvez parcourir les ensembles de champs de formulaire et les champs à l'intérieur de chaque ensemble de champs. Cela peut simplifier la sortie de formulaires complexes avec de nombreux onglets.
 
-![country edit form](../../../en/images/mvc-anatomy/mvc-anatomy-administrator-edit-files/01-country-edit-form/01-country-edit-form.png)
+![country edit form](../../../en/images/mvc-anatomy/mvc-anatomy-administrator-edit-files/01-country-edit-form.png)
 
 *Traduit par openai.com*
 

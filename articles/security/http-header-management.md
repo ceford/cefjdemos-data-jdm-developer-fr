@@ -1,4 +1,11 @@
-<!-- Filename: J4.x:Http_Header_Management / Display title: En-têtes HTTP -->
+<!--
+{
+  "source": "https://docs.joomla.org/J4.x:Http_Header_Management",
+  "title": "En-têtes HTTP ",
+  "description": "", 
+  "author": ""
+}
+-->
 
 ## Introduction
 

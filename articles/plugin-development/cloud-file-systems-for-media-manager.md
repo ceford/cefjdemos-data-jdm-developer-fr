@@ -1,4 +1,11 @@
-<!-- Filename: J4.x:Cloud_File_Systems_for_Media_Manager / Display title: Systèmes de fichiers cloud pour le gestionnaire de médias -->
+<!--
+{
+  "source": "https://docs.joomla.org/J4.x:Cloud_File_Systems_for_Media_Manager",
+  "title": "Systèmes de fichiers cloud pour le gestionnaire de médias ",
+  "description": "", 
+  "author": ""
+}
+-->
 
 <span id="main-portal-heading">GSoC 2017
 Systèmes de fichiers Cloud pour le gestionnaire de médias

@@ -1,4 +1,11 @@
-<!-- Filename: J4.x:Using_Bootstrap_Components_in_Joomla_4 / Display title: Utilisation des composants Bootstrap dans Joomla 4 -->
+<!--
+{
+  "source": "https://docs.joomla.org/J4.x:Using_Bootstrap_Components_in_Joomla_4",
+  "title": "Utilisation des composants Bootstrap dans Joomla 4 ",
+  "description": "", 
+  "author": ""
+}
+-->
 
 ## Introduction
 

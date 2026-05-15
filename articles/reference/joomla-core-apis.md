@@ -1,4 +1,11 @@
-<!-- Filename: J4.x:Joomla_Core_APIs / Display title: APIs de base de Joomla -->
+<!--
+{
+  "source": "https://docs.joomla.org/J4.x:Joomla_Core_APIs",
+  "title": "APIs de base de Joomla ",
+  "description": "", 
+  "author": ""
+}
+-->
 
 Cette page répertorie les points de terminaison disponibles dans Joomla à l'aide d'exemples de commandes curl. Elle a été préparée pour Joomla 4 et nécessite une vérification de conformité avec les versions actuelles de Joomla.
 

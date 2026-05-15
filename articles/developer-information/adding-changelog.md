@@ -1,4 +1,11 @@
-<!-- Filename: Adding_changelog_to_your_manifest_file / Display title: Ajout d'un journal des modifications -->
+<!--
+{
+  "source": "https://docs.joomla.org/Adding_changelog_to_your_manifest_file",
+  "title": "Ajout d'un journal des modifications ",
+  "description": "", 
+  "author": ""
+}
+-->
 
 Depuis Joomla 4.0, les développeurs d'extensions peuvent exploiter la capacité de Joomla à lire un fichier de journal des modifications et à fournir une représentation visuelle de celui-ci. Si une version donnée n'est pas trouvée dans le journal des modifications, le bouton du journal ne sera pas affiché.
 

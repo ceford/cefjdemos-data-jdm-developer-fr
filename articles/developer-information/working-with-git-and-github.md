@@ -1,4 +1,11 @@
-<!-- Filename: Working_with_git_and_github / Display title: Travailler avec git et github -->
+<!--
+{
+  "source": "https://docs.joomla.org/Working_with_git_and_github",
+  "title": "Travailler avec git et github ",
+  "description": "", 
+  "author": ""
+}
+-->
 
 ## Introduction
 
@@ -48,7 +55,7 @@ Sur GitHub, vous pouvez trouver des projets dans ce qu'on appelle des Dépôts. 
 
 Sur votre ordinateur de test, vous allez utiliser la branche **4.2-dev**. Cependant, vous ne pouvez pas modifier cette branche car vous n'en êtes pas le propriétaire. Vous devez en faire une copie. Sur GitHub, cela s'appelle un Fork. Vous êtes le propriétaire de cette copie, donc vous pouvez la modifier. Après avoir modifié votre fork, vous pouvez faire une Pull Request pour les modifications que vous avez apportées. Plus d'informations à ce sujet plus tard. Vous pouvez fork une branche en appuyant sur le bouton Fork dans le [dépôt GitHub de Joomla! CMS](https://github.com/joomla/joomla-cms). Ce bouton est situé en haut à droite de la page.
 
-![Fork joomla in github](../../../en/images/getting-started/working-with-git-and-github/01-fork-joomla-in-github.png)
+![Fork joomla in github](../../../en/images/developer-information/working-with-git-and-github/01-fork-joomla-in-github.png)
 
 Après le fork, vous devez installer Joomla! sur votre ordinateur local. Allez dans le dossier où vous pouvez placer les fichiers utilisés par votre serveur Web. De nombreux programmes utilisent un dossier appelé `htdocs`. Certains utilisent `www` et d'autres utilisent entièrement d'autres dossiers. Tout dépend de si vous utilisez Windows, Mac ou Linux. Finalement, votre racine Web contiendra différents dossiers pour différents sites Web. Une fois que vous êtes dans votre dossier racine web, soit vous utilisez la commande cd dans une fenêtre de terminal ouverte pour changer le répertoire courant vers la racine web, soit, dans votre explorateur de fichiers GUI, trouvez le dossier racine web, appuyez sur le bouton droit de la souris et cliquez sur : "Git Bash Here" ou "Ouvrir le Terminal" ou quelque chose de similaire.
 

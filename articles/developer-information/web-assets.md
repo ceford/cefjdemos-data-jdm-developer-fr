@@ -1,4 +1,11 @@
-<!-- Filename: J4.x:Web_Assets / Display title: Actifs Web -->
+<!--
+{
+  "source": "https://docs.joomla.org/J4.x:Web_Assets",
+  "title": "Actifs Web ",
+  "description": "", 
+  "author": ""
+}
+-->
 
 ## À propos des ressources web
 

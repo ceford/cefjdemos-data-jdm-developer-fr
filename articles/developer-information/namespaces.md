@@ -1,4 +1,11 @@
-<!-- Filename: J4.x:Namespace_Conventions_In_Joomla / Display title: Espaces de noms -->
+<!--
+{
+  "source": "https://docs.joomla.org/J4.x:Namespace_Conventions_In_Joomla",
+  "title": "Espaces de noms ",
+  "description": "", 
+  "author": ""
+}
+-->
 
 ## Introduction
 
